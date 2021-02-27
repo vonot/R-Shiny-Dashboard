@@ -9,6 +9,7 @@ print(data)
 choices <- data[2]
 print(choices)
 
+
 jsCode <- "
 shinyjs.loadData = function(params){
   var defaultParams = {
@@ -25,13 +26,14 @@ shinyjs.loadData = function(params){
   var release = document.getElementById('year')
   var version = document.getElementById('version')
   logo.src = params.image
-  author.innerHTML = params.author
-  release.innerHTML = params.release
-  version.innerHTML = params.version
+  author.innerHTML = 'Criado por: ' +  params.author
+  release.innerHTML = 'Lançado em: ' + params.release
+  version.innerHTML = 'Versão Atual: ' + params.version
 }
 "
 
 ui <- dashboardPage(
+  
   dashboardHeader(title = "Dash LP"),
   dashboardSidebar(
     sidebarMenu(
@@ -49,30 +51,36 @@ ui <- dashboardPage(
               fluidRow(
                 column(12,
                        selectInput("languages", "Select Languges", choices = choices, multiple = FALSE, selected = NULL, width = "100%"), 
-                )
-              ),
-              fluidRow(
-                column(6,
-                       img(id = "logo", height = "200px", width = "200px")),
-                column(6,
-                       p(id="year"),
-                       p(id="author"),
-                       p(id="version"),
-                )
-              ),
-              fluidRow(
-                column(6,
-                       plotOutput("plot"),
-                       sliderInput(max = 2020, min = 2017, inputId = "slider", label = "Select Range of Plot", value = c(2017,2020))
-                       
                 ),
                 column(6,
-                       plotOutput("plot2")
+                       box(
+                         title = "Informação sobre a Linguagem", status = "primary", solidHeader = TRUE, collapsible = FALSE, width = 12,
+                         img(id = "logo", height = "150px", width = "150px", style="border-radius:10px;")
+                       )
+                ),
+                column(6,
+                       valueBoxOutput("pop20", width = 6),
+                       valueBoxOutput("pop19", width = 6),
+                       valueBoxOutput("pop18", width = 6),
+                       valueBoxOutput("pop17", width = 6)
+                )
+              ),
+              fluidRow(
+                column(6,
+                       box(
+                         title = "Grafico Popularida (%) / Tempo (Ano)", solidHeader = TRUE, collapsible = TRUE, width = 12,
+                         plotOutput("plot")
+                       )
+                ),
+                
+                column(6,
+                       box(
+                         title = "Grafico Popularida (%) / Tempo (Ano)", solidHeader = TRUE, collapsible = TRUE, width = 12,
+                         plotOutput("plot2")
+                       )
                 )
               )
-              
       ),
-      
       tabItem( tabName = "lista",
         p("OLa")
       ),
