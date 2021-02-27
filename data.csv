@@ -1,11 +1,11 @@
-id,name,popular,image
-1,JavaScript,67.7%,javascript.svg
-2,HTML/CSS,63.1%,html5.svg
-3,SQL,54.7%,mysql.svg
-4,Python,44.1%,python.svg
-5,Java,40.2%,java.svg
-6,Bash/Shell,33.1%,gnubash.svg
-7,C#,31.4%,csharp.svg
-8,PHP,26.2%,php.svg
-9,TypeScript,25.4%,typescript.svg
-10,C++,23.9%,cplusplus.svg
+id,name,image,by,create at,version,2020,2019,2018,2017,loved,dreaded,wanted
+1,JavaScript,javascript.svg,Brendan Eich,1995,es6,67.7,67.8,69.8,62.5,58.3,41.7,18.5
+2,HTML,html5.svg,Tim Berners-Lee,1993,5,63.1,63.5,68.5,,53.5,46.5,6.5
+3,SQL,mysql.svg,Donald Chamberlin e Raymon F. Boyce,1974,2016,54.7,54.4,57.0,51.2,56.6,43.4,8.2
+4,Python,python.svg,Guido van Rossum,1992,3.9.0,44.1,41.7,38.8,32.0,66.7,33.3,30.0
+5,Java,java.svg,James Gosling,1995,13,40.2,41.1,45.3,39.7,44.1,55.9,8.8
+6,Bash/Shell,gnubash.svg,Linus Torvalds,1989,5.1,33.1,36.6,39.8,,53.7,46.3,3.9
+7,C#,csharp.svg,Anders Hejlsberg ,2000,8.0,31.4,31.0,34.4,34.1,59.7,40.3,7.3
+8,PHP,php.svg,Rasmus Lerdorf,1995,8.0,26.2,26.4,30.7,28.1,37.3,62.7,3.5
+9,TypeScript,typescript.svg,Anders Hejlsberg,2012,4.2,25.4,21.2,17.4,9.5,67.1,32.9,17.0
+10,C++,cplusplus.svg,Bjarne Stroustrup,1979,20,23.9,23.5,25.4,22.3,43.4,56.6,8.6
