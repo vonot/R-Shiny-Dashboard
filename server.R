@@ -1,12 +1,11 @@
 #server.R
 library(shinyjs)
-library(dplyr)
 
 data <- read.csv(file = 'data.csv')
 server <- function(input, output, session) {
   observe({
     language<- input$languages
-    info <- subset(data, name==language)
+    info <- subset(data, Linguagens==language)
     image <- info[1,3]
     author <- info[1,4]
     release <- info[1,5]
@@ -19,7 +18,7 @@ server <- function(input, output, session) {
     dread <- info[1,12]
     wanted <- info[1,13]
     
-    js$loadData(image, author, release, version)
+    js$loadData(image)
     
     output$pop20 <- renderValueBox({
       valueBox(
@@ -46,20 +45,44 @@ server <- function(input, output, session) {
         popyear17Fixed, "Popularidade de 2017", icon = icon("hand-paper"), color = "red")
     })
     
-    output$plot <- renderPlot({
+    output$author <- renderValueBox({
+      valueBox(
+        value = tags$p(author, style="font-size: 18px; max-width:134px"), "Criado por: ")
+    })
+    
+    output$release <- renderValueBox({
+      valueBox(
+        value = tags$p(release, style="font-size: 18px;"), "Lançado em: ")
+    })
+    
+    output$version <- renderValueBox({
+      valueBox(
+        value = tags$p(version, style="font-size: 18px;"), "Ultima Versão: ")
+    })
+    
+    output$porcentagem <- renderPlot({
       x <- 2017:2020
       y <- c(popyear17, popyear18, popyear19,popyear20)
       
-      plot(x,y, type = "l", xaxt="none", xlab="")
+      plot(x,y, type = "l", xaxt="none", xlab="", ylab="")
       axis(1, seq(2017, 2020, 1))
       mtext(side=1, line=2, "Ano")
+      mtext(side=2, line = 2, "Popularidade (%)")
     })
     
-    output$plot2 <- renderPlot({
+    output$proporcaoa <- renderPlot({
       value <- c(loved, dread, wanted)
-      group <- c("Gostam", "Odeiam", "Querem")
+      labels <- c("Gostam", "Odeiam", "Querem")
       
-      pie(value, labels = group, radius = 0.8)
+      percentage<-round(value/sum(value)*100)
+      
+      labels_new<-paste(labels,percentage)
+      labels_new
+      
+      final_labels<-paste(labels_new,'%',sep = "")
+      final_labels
+      
+      pie3D(value, labels = final_labels, explode = 0.1, radius = 2, labelcex = 2, labelcol = "white")
     })
   })
                   
