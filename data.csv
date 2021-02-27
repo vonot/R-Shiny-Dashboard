@@ -1,0 +1,11 @@
+id,name,popular,image
+1,JavaScript,67.7%,javascript.svg
+2,HTML/CSS,63.1%,html5.svg
+3,SQL,54.7%,mysql.svg
+4,Python,44.1%,python.svg
+5,Java,40.2%,java.svg
+6,Bash/Shell,33.1%,gnubash.svg
+7,C#,31.4%,csharp.svg
+8,PHP,26.2%,php.svg
+9,TypeScript,25.4%,typescript.svg
+10,C++,23.9%,cplusplus.svg
