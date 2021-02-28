@@ -3,6 +3,9 @@ library(shinyjs)
 
 data <- read.csv(file = 'data.csv')
 server <- function(input, output, session) {
+  
+  # DashBoard Main
+  
   observe({
     language<- input$languages
     info <- subset(data, Linguagens==language)
@@ -17,7 +20,7 @@ server <- function(input, output, session) {
     loved <- info[1,11]
     dread <- info[1,12]
     wanted <- info[1,13]
-    
+      
     js$loadData(image)
     
     output$pop20 <- renderValueBox({
@@ -85,5 +88,9 @@ server <- function(input, output, session) {
       pie3D(value, labels = final_labels, explode = 0.1, radius = 2, labelcex = 2, labelcol = "white")
     })
   })
+  
+  #Dashboard Table
+  
+  
                   
 }

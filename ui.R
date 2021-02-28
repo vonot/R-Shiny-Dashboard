@@ -84,7 +84,16 @@ ui <- dashboardPage(
               )
       ),
       tabItem( tabName = "lista",
-        p("OLa")
+               fluidRow(
+                 tabBox(
+                 title = "Lista das Linguagens mais populares",
+                 id = "table", height = "250px",
+                 tabPanel("2020", "Tab content 1"),
+                 tabPanel("2019", "Tab content 2"),
+                 tabPanel("2018", "Tab content 3"),
+                 tabPanel("2017", "Tab content 4")
+                )
+               )
       ),
       
       tabItem(tabName = "compare",
