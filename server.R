@@ -91,5 +91,14 @@ server <- function(input, output, session) {
   
   #Dashboard Table
   
-  js$tableData(data)             
+  js$tableData(data)
+  
+  observe({
+    png(file="comp_chart.png")
+    langComp <- input$selectComparacao
+    infoComp <- subset(data, Linguagens==langComp)
+    if(length(infoComp)>1){
+      
+    }
+  })
 }

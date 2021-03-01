@@ -226,8 +226,7 @@ ui <-dashboardPage(
       
       tabItem(tabName = "compare",
               
-              taskItem(value = 90, color = "green",
-                       "Teste")
+              selectInput("selectComparacao", "Selecione as Linguagens para comparar", multiple = TRUE, choices)
       )
     )
   ))
