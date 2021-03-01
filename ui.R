@@ -10,15 +10,59 @@ choices <- data[2]
 
 jsCode <- "
 shinyjs.loadData = function(params){
-  var defaultParams = {
-    image : null,
-  };
+    var defaultParams = {
+      image : null
+    };
   
-  params = shinyjs.getParams(params, defaultParams);
+    params = shinyjs.getParams(params, defaultParams);
   
-  var logo = document.getElementById('logo')
-  logo.src = params.image
-}
+    var logo = document.getElementById('logo')
+    logo.src = params.image
+  }
+  
+shinyjs.tableData = function(params){
+
+    // Inicalização dos dados
+    
+    var defaultParams = {
+      data : null
+    };
+    
+    params = shinyjs.getParams(params, defaultParams);
+    
+    let data = params.data
+    
+    let length = data['Linguagens'].length
+    
+    let dados = []
+    
+    for(let i=0; i<length; i++){
+    dados[i] = {nome: data.Linguagens[i],
+                x2020 : data.X2020[i],
+                x2019 : data.X2019[i],
+                x2018 : data.X2018[i],
+                x2017 : data.X2017[i]}
+    }
+    
+    //Inicialização das tabelas
+    
+    var table20 = document.getElementById('table20')
+    var table20 = document.getElementById('table19')
+    var table20 = document.getElementById('table18')
+    var table20 = document.getElementById('table17')
+    
+    //Montagem das tabelas
+    
+    //2020
+    
+    table20.innerHTLM += '<tbody>'
+    for(let i = 0; i<length; i++){
+      if(dados[i].x2020 != null){}
+      
+    }
+    
+    
+}  
 "
 
 ui <- dashboardPage(
@@ -34,7 +78,7 @@ ui <- dashboardPage(
   ),
   dashboardBody(
     useShinyjs(),
-    extendShinyjs(text = jsCode, functions = c("loadData")),
+    extendShinyjs(text = jsCode, functions = c("loadData", "tableData")),
     tabItems(
       tabItem(tabName = "dash",
               fluidRow(
@@ -88,17 +132,59 @@ ui <- dashboardPage(
                  tabBox(
                  title = "Lista das Linguagens mais populares",
                  id = "table", height = "250px",
-                 tabPanel("2020", "Tab content 1"),
-                 tabPanel("2019", "Tab content 2"),
-                 tabPanel("2018", "Tab content 3"),
-                 tabPanel("2017", "Tab content 4")
+                 tabPanel("2020", 
+                          tags$table(class= "table", id="table20",
+                                     tags$thead( class="thead-light",
+                                                 tags$tr(
+                                                   tags$th("#"),
+                                                   tags$th("Linguagem"),
+                                                   tags$th("Popularidade"),
+                                                 )
+                                       
+                                     ))
+                            ), 
+                 tabPanel("2019",
+                          tags$table(class= "table", id="table19",
+                                     tags$thead( class="thead-light",
+                                                 tags$tr(
+                                                   tags$th("#"),
+                                                   tags$th("Linguagem"),
+                                                   tags$th("Popularidade"),
+                                                 )
+                                                 
+                                     ))
+                          ),
+                 tabPanel("2018", 
+                          tags$table(class= "table", id="table18",
+                                     tags$thead( class="thead-light",
+                                                 tags$tr(
+                                                   tags$th("#"),
+                                                   tags$th("Linguagem"),
+                                                   tags$th("Popularidade"),
+                                                 )
+                                                 
+                                     ))
+                          ),
+                 tabPanel("2017",
+                          tags$table(class= "table", id="table17",
+                                     tags$thead( class="thead-light",
+                                                 tags$tr(
+                                                   tags$th("#"),
+                                                   tags$th("Linguagem"),
+                                                   tags$th("Popularidade"),
+                                                 )
+                                                 
+                                     ))
+                          )
                 )
                )
       ),
       
       tabItem(tabName = "compare",
-      p("hello")
+      
+      taskItem(value = 90, color = "green",
+               "Teste")
       )
     )
-)
+  )
 )

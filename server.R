@@ -91,6 +91,5 @@ server <- function(input, output, session) {
   
   #Dashboard Table
   
-  
-                  
+  js$tableData(data)             
 }
