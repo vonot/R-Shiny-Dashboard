@@ -20,7 +20,7 @@ Para desenvolver esse projeto foram utilizados:
   <li><a href="https://www.r-project.org/" target="_blank">R</a>;</li>
   <li><a href="https://shiny.rstudio.com/" target="_blank">Shiny</a>;</li>
   <li><a href="http://rstudio.github.io/shinydashboard/" target="_blank">Shiny Dashboard</a>;</li>
-  <li><a href="https://deanattali.com/shinyjs/" target="_blank">ShinyJS</a>.</li>
+  <li><a href="https://deanattali.com/shinyjs/" target="_blank">ShinyJS</a>;</li>
   <li><a href="https://cran.r-project.org/package=plotrix" target="_blank">Plotrix</a>.</li>
  </ul>
 <h2 id="autor"> :smile: Autor</h2>
