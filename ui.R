@@ -102,16 +102,14 @@ ui <-dashboardPage(
   dashboardHeader(title = "Dash LP"),
   dashboardSidebar(
     sidebarMenu(
-      menuItem("Dashboard", tabName = "dash", icon = icon("dashboard")),
-      menuItem("Compare",
-               menuSubItem("Lista das Mais Populares 2020", tabName = "lista"),
-               menuSubItem("Compare a Popularidade", tabName = "compare"))
+      menuItem("Dashboard", tabName = "dash", icon = icon("dashboard"), selected = TRUE),
+      menuItem("Compare", tabName = "lista")
     )
   ),
   dashboardBody(
     useShinyjs(),
     extendShinyjs(text = jsCode, functions = c("loadData", "tableData")),
-    tabItems(
+    tabItems( 
       tabItem(tabName = "dash",
               fluidRow(
                 column(12,
@@ -220,13 +218,16 @@ ui <-dashboardPage(
                                       
                            )
                   )
+                ),
+                
+                column(6,
+                       selectInput("selectComparacao", "Selecione as Linguagens para comparar", multiple = TRUE, choices, width = '100%'),
+                       box(title = NULL, width = '100%',
+                           plotOutput("compPlot")
+                           )
                 )
       )
-      ),
-      
-      tabItem(tabName = "compare",
-              
-              selectInput("selectComparacao", "Selecione as Linguagens para comparar", multiple = TRUE, choices)
       )
     )
-  ))
+  )
+)

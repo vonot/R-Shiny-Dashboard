@@ -94,11 +94,34 @@ server <- function(input, output, session) {
   js$tableData(data)
   
   observe({
-    png(file="comp_chart.png")
     langComp <- input$selectComparacao
     infoComp <- subset(data, Linguagens==langComp)
-    if(length(infoComp)>1){
-      
+    png(file = "line_chart_2_lines.jpg")
+    if(length(langComp)==0){
+      output$compPlot <- renderPlot({
+        compX1 <- 2017:2020
+        compY1 <- c(0, 0, 0,0)
+        plot(compX1,compY1, type = "l", xaxt="none", xlab="", ylab="")
+        axis(1, seq(2017, 2020, 1))
+        mtext(side=1, line=2, "Ano")
+        mtext(side=2, line = 2, "Popularidade (%)")
+      })
+    } else {
+        output$compPlot <- renderPlot({
+          if(length(langComp)==1){
+        compX1 <- 2017:2020
+        compY1 <- c(infoComp[1,10], infoComp[1,9], infoComp[1,8],infoComp[1,7])
+        plot(compX1,compY1, type = "l", xaxt="none", xlab="", ylab="")
+        axis(1, seq(2017, 2020, 1))
+        mtext(side=1, line=2, "Ano")
+        mtext(side=2, line = 2, "Popularidade (%)")
+    } else{
+      for(i in infoComp){
+        lines(c(2017:2020), c(infoComp[2,10], infoComp[2,9], infoComp[2,8],infoComp[2,7]), type = "l")
+      }
     }
+        })
+    }
+    dev.off()
   })
 }

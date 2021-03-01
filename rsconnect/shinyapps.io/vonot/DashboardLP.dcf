@@ -1,0 +1,12 @@
+name: DashboardLP
+title: DashboardLP
+username:
+account: vonot
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 3713624
+bundleId: 4284549
+url: https://vonot.shinyapps.io/DashboardLP/
+when: 1614584207.25018
+asMultiple: FALSE
+asStatic: FALSE
