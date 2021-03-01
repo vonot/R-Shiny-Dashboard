@@ -221,6 +221,7 @@ ui <-dashboardPage(
                            )
                   )
                 )
+      )
       ),
       
       tabItem(tabName = "compare",
